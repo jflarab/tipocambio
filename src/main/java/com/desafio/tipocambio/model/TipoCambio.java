@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tipocambio")
 public class TipoCambio {
-
     @Id
     private long id;
 

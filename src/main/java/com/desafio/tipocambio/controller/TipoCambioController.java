@@ -26,9 +26,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 public class TipoCambioController {
-
     private static final Logger logger = LoggerFactory.getLogger(TipocambioApplication.class);
-
     @Autowired
     private TipoCambioRepository repository;
 

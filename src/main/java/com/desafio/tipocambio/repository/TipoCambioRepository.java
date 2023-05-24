@@ -10,6 +10,7 @@ import com.desafio.tipocambio.model.TipoCambio;
 
 @Repository
 public interface TipoCambioRepository extends JpaRepository<TipoCambio,Long> {
+	
 	@Query(value = "SELECT * FROM tipocambio t WHERE t.monedaorigen = ?1 AND t.monedadestino= ?2", nativeQuery=true)
 	public List<TipoCambio> getMontoTipoCambio(String monedaOrigen, String monedaDestino);
 }
