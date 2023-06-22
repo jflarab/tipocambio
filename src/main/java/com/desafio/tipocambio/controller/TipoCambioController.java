@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafio.tipocambio.TipocambioApplication;
@@ -24,6 +26,7 @@ import com.desafio.tipocambio.repository.TipoCambioRepository;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
 @RequestMapping("/api/v1")
 public class TipoCambioController {
     private static final Logger logger = LoggerFactory.getLogger(TipocambioApplication.class);
@@ -31,12 +34,14 @@ public class TipoCambioController {
     private TipoCambioRepository repository;
 
     @GetMapping("/tipocambios")
+    @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     public List<TipoCambio> getAllTipoCambios() {
         logger.info("Get all the TipoCambio...");
         return repository.findAll();
     }
 
     @PostMapping("/tipocambio/monto")
+    @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     public ResponseEntity<ResTipoCambio> getMontoTipoCambio(@RequestBody ReqTipoCambio tipocambio) throws ResourceNotFoundException{
     	
     	System.out.println("origen:"+tipocambio.getMonedaorigen());
