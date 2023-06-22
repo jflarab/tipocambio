@@ -37,7 +37,8 @@ public class TipoCambioController {
     }
 
     @PostMapping("/tipocambio/monto")
-    public ResponseEntity<ResTipoCambio> createEmployee(@RequestBody ReqTipoCambio tipocambio) throws ResourceNotFoundException{
+    public ResponseEntity<ResTipoCambio> getMontoTipoCambio(@RequestBody ReqTipoCambio tipocambio) throws ResourceNotFoundException{
+    	
     	System.out.println("origen:"+tipocambio.getMonedaorigen());
     	System.out.println("destino:"+tipocambio.getMonedadestino());
         List<TipoCambio> lista = repository.getMontoTipoCambio(tipocambio.getMonedaorigen(), tipocambio.getMonedadestino());

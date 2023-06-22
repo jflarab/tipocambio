@@ -1,8 +1,5 @@
 package com.desafio.tipocambio.model;
 
-
-
-
 public class ResTipoCambio {
    
     private String monedaorigen;    
