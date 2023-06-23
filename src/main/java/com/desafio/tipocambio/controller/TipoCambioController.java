@@ -34,14 +34,12 @@ public class TipoCambioController {
     private TipoCambioRepository repository;
 
     @GetMapping("/tipocambios")
-    @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     public List<TipoCambio> getAllTipoCambios() {
         logger.info("Get all the TipoCambio...");
         return repository.findAll();
     }
 
     @PostMapping("/tipocambio/monto")
-    @CrossOrigin(origins = "*", methods = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS})
     public ResponseEntity<ResTipoCambio> getMontoTipoCambio(@RequestBody ReqTipoCambio tipocambio) throws ResourceNotFoundException{
     	
     	System.out.println("origen:"+tipocambio.getMonedaorigen());
