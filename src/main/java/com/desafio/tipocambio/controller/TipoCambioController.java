@@ -52,7 +52,7 @@ public class TipoCambioController {
         ResTipoCambio response = new ResTipoCambio();
         response.setMonedaorigen(tipocambio.getMonedaorigen());
         response.setMonedadestino(tipocambio.getMonedadestino());        
-        response.setMonto(lista.get(0).getTipocambio()*tipocambio.getMonto());
+        response.setMonto((double)Math.round(lista.get(0).getTipocambio()*tipocambio.getMonto()*100)/100);
         return ResponseEntity.ok().body(response);
     }
    
