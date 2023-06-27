@@ -7,6 +7,16 @@ public class ResTipoCambio {
     private String monedadestino;
    
     private Double monto;
+    
+    private Double tipocambio;
+
+	public Double getTipocambio() {
+		return tipocambio;
+	}
+
+	public void setTipocambio(Double tipocambio) {
+		this.tipocambio = tipocambio;
+	}
 
 	public String getMonedaorigen() {
 		return monedaorigen;
