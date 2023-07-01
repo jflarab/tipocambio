@@ -22,6 +22,7 @@ import com.desafio.tipocambio.model.ReqTipoCambio;
 import com.desafio.tipocambio.model.ResTipoCambio;
 import com.desafio.tipocambio.model.TipoCambio;
 import com.desafio.tipocambio.repository.TipoCambioRepository;
+import com.desafio.tipocambio.service.TipoCambioService;
 
 import java.util.List;
 
@@ -31,12 +32,12 @@ import java.util.List;
 public class TipoCambioController {
     private static final Logger logger = LoggerFactory.getLogger(TipocambioApplication.class);
     @Autowired
-    private TipoCambioRepository repository;
+    private TipoCambioService tipoCambioService;
 
     @GetMapping("/tipocambios")
     public List<TipoCambio> getAllTipoCambios() {
         logger.info("Get all the TipoCambio...");
-        return repository.findAll();
+        return tipoCambioService.getAllTipoCambios();
     }
 
     @PostMapping("/tipocambio/monto")
@@ -44,7 +45,7 @@ public class TipoCambioController {
     	
     	System.out.println("origen:"+tipocambio.getMonedaorigen());
     	System.out.println("destino:"+tipocambio.getMonedadestino());
-        List<TipoCambio> lista = repository.getMontoTipoCambio(tipocambio.getMonedaorigen(), tipocambio.getMonedadestino());
+        List<TipoCambio> lista = tipoCambioService.getMontoTipoCambio(tipocambio);
         System.out.println("size:"+lista.size());
         if(lista.size()==0) 
         	throw new ResourceNotFoundException("Tipo de cambio no encontrado:: " + tipocambio);
