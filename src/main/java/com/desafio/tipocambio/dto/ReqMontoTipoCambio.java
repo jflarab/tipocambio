@@ -1,6 +1,6 @@
-package com.desafio.tipocambio.model;
+package com.desafio.tipocambio.dto;
 
-public class ReqTipoCambio {
+public class ReqMontoTipoCambio {
    
     private String monedaorigen;    
    

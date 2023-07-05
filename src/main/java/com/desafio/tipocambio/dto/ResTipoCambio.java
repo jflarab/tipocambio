@@ -1,12 +1,10 @@
-package com.desafio.tipocambio.model;
+package com.desafio.tipocambio.dto;
 
 public class ResTipoCambio {
    
     private String monedaorigen;    
    
     private String monedadestino;
-   
-    private Double monto;
     
     private Double tipocambio;
 
@@ -32,16 +30,7 @@ public class ResTipoCambio {
 
 	public void setMonedadestino(String monedadestino) {
 		this.monedadestino = monedadestino;
-	}
-
-	public Double getMonto() {
-		return monto;
-	}
-
-	public void setMonto(Double monto) {
-		this.monto = monto;
-	}
-    
+	}    
 
    
 }

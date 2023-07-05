@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.desafio.tipocambio.TipocambioApplication;
+import com.desafio.tipocambio.dto.ReqMontoTipoCambio;
+import com.desafio.tipocambio.dto.ResMontoTipoCambio;
+import com.desafio.tipocambio.dto.ResTipoCambio;
 import com.desafio.tipocambio.exception.ResourceNotFoundException;
-import com.desafio.tipocambio.model.ReqTipoCambio;
-import com.desafio.tipocambio.model.ResTipoCambio;
 import com.desafio.tipocambio.model.TipoCambio;
 import com.desafio.tipocambio.repository.TipoCambioRepository;
 import com.desafio.tipocambio.service.TipoCambioService;
@@ -35,26 +36,15 @@ public class TipoCambioController {
     private TipoCambioService tipoCambioService;
 
     @GetMapping("/tipocambios")
-    public List<TipoCambio> getAllTipoCambios() {
+    public List<ResTipoCambio> getAllTipoCambios() {
         logger.info("Get all the TipoCambio...");
         return tipoCambioService.getAllTipoCambios();
     }
 
     @PostMapping("/tipocambio/monto")
-    public ResponseEntity<ResTipoCambio> getMontoTipoCambio(@RequestBody ReqTipoCambio tipocambio) throws ResourceNotFoundException{
-    	
-    	System.out.println("origen:"+tipocambio.getMonedaorigen());
-    	System.out.println("destino:"+tipocambio.getMonedadestino());
-        List<TipoCambio> lista = tipoCambioService.getMontoTipoCambio(tipocambio);
-        System.out.println("size:"+lista.size());
-        if(lista.size()==0) 
-        	throw new ResourceNotFoundException("Tipo de cambio no encontrado:: " + tipocambio);
-        
-        ResTipoCambio response = new ResTipoCambio();
-        response.setMonedaorigen(tipocambio.getMonedaorigen());
-        response.setMonedadestino(tipocambio.getMonedadestino());        
-        response.setMonto((double)Math.round(lista.get(0).getTipocambio()*tipocambio.getMonto()*100)/100);
-        response.setTipocambio(lista.get(0).getTipocambio());
+    public ResponseEntity<ResMontoTipoCambio> getMontoTipoCambio(@RequestBody ReqMontoTipoCambio tipocambio) throws ResourceNotFoundException {
+    	logger.info("Get MontoTipoCambio...");
+    	ResMontoTipoCambio response = tipoCambioService.getMontoTipoCambio(tipocambio);        
         return ResponseEntity.ok().body(response);
     }
    
